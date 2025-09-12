@@ -1,0 +1,64 @@
+// Add event listener to the "Explore my work" button
+document.querySelector('#hero button').addEventListener('click', () => {
+    // Scroll to the projects section
+    document.querySelector('#projects').scrollIntoView({ behavior: 'smooth' });
+});
+
+// Add event listener to the navigation links
+document.querySelectorAll('header nav ul li a').forEach((link) => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Scroll to the corresponding section
+        document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+// Add animation to the hero section
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('#hero').classList.add('animate');
+});
+
+// Add animation to the project cards
+document.addEventListener('scroll', () => {
+    const projectCards = document.querySelectorAll('.project');
+    projectCards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            card.classList.add('animate');
+        }
+    });
+});
+
+// Add animation to the testimonials
+document.addEventListener('scroll', () => {
+    const testimonials = document.querySelectorAll('.testimonial');
+    testimonials.forEach((testimonial) => {
+        const rect = testimonial.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            testimonial.classList.add('animate');
+        }
+    });
+});
+
+// Contact form submission
+document.querySelector('#contact form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Add form submission logic here
+    alert('Form submitted successfully!');
+});
+
+// Dark theme toggle
+document.querySelector('body').classList.add('dark-theme');
+
+// Add dark theme styles
+const style = document.createElement('style');
+style.innerHTML = `
+    body.dark-theme {
+        background-color: #2f4f7f;                  
+        color: #fff;
+    }
+`/* nylon color */
+        color: #fff;
+    }
+`;
+document.head.appendChild(style);
